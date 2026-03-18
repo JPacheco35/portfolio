@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Portfolio App',
-  description: 'A simple 3-page portfolio app',
+  title: 'Juan Pacheco - Designer & Developer',
+  description: 'Portfolio of Juan Pacheco, a designer and developer building beautiful web experiences.',
 };
 
 export default function RootLayout({
@@ -13,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+        {children}
+      </body>
     </html>
   );
 }

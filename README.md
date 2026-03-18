@@ -1,60 +1,185 @@
-# Portfolio Placeholder App
+# Portfolio Website
 
-A simple 3-page Next.js app with navigation between pages.
+A modern, vibrant portfolio built with Next.js, TypeScript, Tailwind CSS, and interactive particle animations.
 
-## Setup
+## Features
 
-1. Extract the zip file
-2. Navigate to the project directory:
-   ```bash
-   cd portfolio-complete
-   ```
+✨ **Interactive Particle Background** - Responds to mouse movement  
+🎨 **Modern Design** - Gradient text, smooth animations, glassmorphism  
+📱 **Fully Responsive** - Mobile-first design  
+⚡ **Fast Performance** - Optimized Next.js app  
+🎯 **Customizable Sections** - Hero, Skills, Projects, Education, Contact  
+🔗 **Project Showcase** - Detailed project cards with tech stacks and links  
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
+- **Framework**: Next.js 16
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 3
+- **UI Components**: shadcn/ui (setup ready)
+- **Animation**: CSS animations + Canvas particles
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+## Quick Start
 
-## File Structure
+### 1. Install Dependencies
 
-```
-src/
-├── app/
-│   ├── page.tsx            # Home page
-│   ├── layout.tsx          # Root layout
-│   ├── globals.css         # Global Tailwind styles
-│   ├── page1/
-│   │   └── page.tsx        # Page 1
-│   ├── page2/
-│   │   └── page.tsx        # Page 2
-│   └── page3/
-│       └── page.tsx        # Page 3
-└── components/
-    └── Navigation.tsx      # Reusable navigation component
+```bash
+npm install
 ```
 
-## Pages
+or
 
-- `/` - Home page with links to all pages
-- `/page1` - Blue themed page with navigation
-- `/page2` - Green themed page with navigation
-- `/page3` - Purple themed page with navigation
+```bash
+yarn install
+```
 
-## Technologies
+### 2. Run Development Server
 
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS
-- Tailwind CSS v3 (stable version)
+```bash
+npm run dev
+```
 
-## Next Steps
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Use this as a foundation to build your actual portfolio!
+### 3. Customize Content
+
+Edit the following components to add your information:
+
+- **Hero Section**: `src/components/HeroSection.tsx`
+- **Skills**: `src/components/SkillsSection.tsx`
+- **Projects**: `src/components/ProjectsSection.tsx`
+- **Education**: `src/components/EducationSection.tsx`
+- **Contact**: `src/components/ContactSection.tsx`
+
+## Project Structure
+
+```
+portfolio/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx          # Main page
+│   │   ├── layout.tsx        # Root layout
+│   │   └── globals.css       # Global styles
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── SkillsSection.tsx
+│   │   ├── ProjectsSection.tsx
+│   │   ├── EducationSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   └── ParticleBackground.tsx
+│   └── lib/
+│       └── utils.ts          # Utility functions
+├── tailwind.config.ts        # Tailwind config
+├── tsconfig.json
+├── package.json
+└── README.md
+```
+
+## Customization Guide
+
+### Adding Projects
+
+Edit `src/components/ProjectsSection.tsx` and update the `projects` array:
+
+```typescript
+const projects: Project[] = [
+  {
+    id: '1',
+    title: 'Your Project Name',
+    dateRange: 'Jan 2024 - Feb 2024',
+    badges: ['Featured', '5K Users'],
+    description: 'Your project description...',
+    technologies: ['⚛️', '▲', '🎨'], // emoji icons
+    links: [
+      { label: 'GitHub', href: 'https://github.com/...', icon: '⭐' },
+      { label: 'Live', href: 'https://...', icon: '🔗' },
+    ],
+  },
+];
+```
+
+### Customizing Colors
+
+Edit `tailwind.config.ts` to change the color scheme. Currently uses blue (`from-blue-400 to-blue-600`).
+
+### Updating Skills
+
+Edit `src/components/SkillsSection.tsx` and update the `skills` array:
+
+```typescript
+const skills = [
+  { icon: '⚛️', name: 'React' },
+  // Add more skills...
+];
+```
+
+### Changing Contact Links
+
+Edit `src/components/ContactSection.tsx` to update email, LinkedIn, GitHub, and Twitter links.
+
+## Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+```bash
+npm install -g vercel
+vercel
+```
+
+### Other Platforms
+
+This is a standard Next.js app and can be deployed to any platform that supports Node.js:
+- Netlify
+- GitHub Pages
+- AWS Amplify
+- Render
+- Railway
+
+## Adding shadcn/ui Components
+
+To add shadcn/ui components:
+
+1. Install a component:
+```bash
+npx shadcn-ui@latest add button
+```
+
+2. Import and use in your components:
+```tsx
+import { Button } from '@/components/ui/button'
+```
+
+## Environment Variables
+
+Create a `.env.local` file for any environment variables you need:
+
+```env
+NEXT_PUBLIC_API_URL=your_api_url
+```
+
+## Performance Tips
+
+- Images are optimized with Next.js Image component
+- CSS is minified in production
+- JavaScript is code-split automatically
+- Particle background uses Canvas for performance
+
+## License
+
+This portfolio template is open source and available under the MIT License.
+
+## Support
+
+For issues or questions, feel free to open a GitHub issue or contact me directly!
+
+---
+
+Made with ❤️ by Juan Pacheco
