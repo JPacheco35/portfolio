@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import styles from "@/components/HeroSection.module.css";
 
 interface Project {
   id: string
@@ -16,7 +17,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    title: 'E-Commerce Platform',
+    title: 'Truncc8',
     dateRange: 'May 2024 - Jun 2024',
     badges: ['Featured', '10K+ Users'],
     description:
@@ -29,7 +30,7 @@ const projects: Project[] = [
   },
   {
     id: '2',
-    title: 'Design System',
+    title: 'Pheels',
     dateRange: 'Jan 2024 - Present',
     badges: ['Open Source'],
     description:
@@ -42,7 +43,7 @@ const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'Analytics Dashboard',
+    title: 'Doble-Seis',
     dateRange: 'Mar 2024 - Apr 2024',
     badges: ['Client Project'],
     description:
@@ -52,33 +53,22 @@ const projects: Project[] = [
   },
   {
     id: '4',
-    title: 'AI Chat Interface',
-    dateRange: 'Feb 2024 - Mar 2024',
-    badges: ['Personal Project', '5K Views'],
+    title: 'Portfolio Website',
+    dateRange: 'Mar 2024 - Apr 2024',
+    badges: ['Client Project'],
     description:
-      'Modern chat application with streaming responses, persistent history, and real-time collaboration features.',
-    technologies: ['▲', '🧠', '🍃'],
-    links: [
-      { label: 'GitHub', href: '#', icon: '⭐' },
-      { label: 'Live Demo', href: '#', icon: '🔗' },
-    ],
-  },
-  {
-    id: '5',
-    title: 'Senior Design Project',
-    dateRange: 'Sep 2023 - May 2024',
-    badges: ['Capstone', 'Distinction Award'],
-    description:
-      'Led cross-functional team of 4 on a comprehensive product design and prototyping project. Delivered presentation to industry stakeholders.',
-    technologies: ['🎭', '⚙️', '🔍'],
-    links: [{ label: 'Case Study', href: '#', icon: '📄' }],
-  },
+        'Real-time data visualization with custom charts, interactive filters, and export capabilities. Built for enterprise use.',
+    technologies: ['⚛️', '📈', '🔌'],
+    links: [{ label: 'Live Demo', href: '#', icon: '🔗' }],
+  }
 ]
 
 export function ProjectsSection() {
   return (
     <section id="projects" className="container-max py-16">
-      <h2 className="mb-8 border-b border-blue-500/30 pb-4 text-3xl font-bold">Projects</h2>
+      <h2 className="mb-8 border-b border-blue-500/30 pb-4 text-[60px] font-bold">
+        Personal <span className={styles.heroNameGradient}> Projects</span>
+      </h2>
       <div className="space-y-6">
         {projects.map((project) => (
           <Card

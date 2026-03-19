@@ -20,7 +20,7 @@ export function TypewriterText({
   cursorClassName,
   typingSpeedMs = 95,
   deletingSpeedMs = 45,
-  pauseDurationMs = 1200,
+  pauseDurationMs = 600,
   pauseDurationByWord,
   minWidthCh,
   ariaLabelPrefix = 'Current text',

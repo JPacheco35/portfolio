@@ -20,7 +20,7 @@ export function Header() {
             'h-auto px-2 text-xl font-bold gradient-text hover:bg-transparent',
           )}
         >
-          JP
+          John Pacheco
         </a>
         <nav className="flex items-center gap-1 sm:gap-2">
           {navItems.map((item) => (
