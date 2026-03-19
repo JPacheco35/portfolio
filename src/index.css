@@ -53,3 +53,43 @@ canvas {
   left: 0;
   pointer-events: none;
 }
+
+.skills-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skills-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  animation: skills-marquee-scroll 28s linear infinite;
+}
+
+.skills-marquee-track-reverse {
+  animation-direction: reverse;
+  animation-duration: 32s;
+}
+
+.skills-tab-fade {
+  animation: skills-tab-fade-in 240ms ease-out;
+}
+
+@keyframes skills-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+
+@keyframes skills-tab-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

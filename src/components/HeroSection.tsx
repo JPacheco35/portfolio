@@ -12,7 +12,7 @@ const heroName = 'John Pacheco'
 const heroFull = `${heroPrefix}${heroName}`
 
 // list of hero roles to alternate between
-const HERO_ROLES = [
+const heroRoles = [
   'Web Developer',
   'Frontend Engineer',
   'Problem Solver',
@@ -80,7 +80,7 @@ export function HeroSection() {
                   className="text-xl font-semibold text-blue-400 sm:text-2xl"
                 >
                   <TypewriterText
-                    words={HERO_ROLES}
+                    words={heroRoles}
                     minWidthCh={22}
                     ariaLabelPrefix="Current role"
                     pauseDurationMs={8000}
