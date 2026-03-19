@@ -92,7 +92,7 @@ export function SkillsSection() {
   )
 
   return (
-    <section id="skills" className="container-max py-16">
+    <section id="skills" className="container-max py-16 pb-60 border-b border-blue-500/30">
 
       {/* Section Header */}
       <div className="mb-12 text-center">
@@ -173,4 +173,3 @@ export function SkillsSection() {
     </section>
   )
 }
-
