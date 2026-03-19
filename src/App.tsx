@@ -1,5 +1,5 @@
 import { ContactSection } from './components/ContactSection'
-import { EducationSection } from './components/EducationSection'
+import { ExperienceSection } from './components/ExperienceSection'
 import { Header } from './components/Header'
 import { HeroSection } from './components/HeroSection'
 import { ParticleBackground } from './components/ParticleBackground'
@@ -15,8 +15,8 @@ function App() {
       <main className="relative z-10">
         <HeroSection />
         <SkillsSection />
+        <ExperienceSection />
         <ProjectsSection />
-        <EducationSection />
         <ContactSection />
 
         <footer className="container-max mt-16 border-t border-blue-500/10 py-8 text-center text-sm text-slate-400">
