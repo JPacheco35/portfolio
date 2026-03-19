@@ -13,15 +13,26 @@ function App() {
       <Header />
 
       <main className="relative z-10">
-        <HeroSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <ContactSection />
 
-        <footer className="container-max mt-16 border-t border-blue-500/10 py-8 text-center text-sm text-slate-400">
-          <p>&copy; 2025 John Pacheco. All rights reserved.</p>
-        </footer>
+          {/*name + bio + picture*/}
+          <HeroSection />
+
+          {/*skills + technologies section*/}
+          <SkillsSection />
+
+          {/*past experience section*/}
+          <ExperienceSection />
+
+          {/*personal projects section*/}
+          <ProjectsSection />
+
+          {/*contact me section*/}
+          <ContactSection />
+
+          {/*page footer*/}
+          <footer className="container-max mt-16 border-t border-blue-500/10 py-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 John Pacheco. All rights reserved.</p>
+          </footer>
       </main>
     </div>
   )
