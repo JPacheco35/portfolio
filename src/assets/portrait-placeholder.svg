@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="560" viewBox="0 0 480 560" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">A placeholder portrait silhouette inside a rounded rectangle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="476" height="556" rx="32" fill="url(#bg)" stroke="url(#stroke)" stroke-width="4"/>
+  <circle cx="240" cy="210" r="90" fill="#334155"/>
+  <path d="M90 474c0-82.84 67.16-150 150-150s150 67.16 150 150" fill="#334155"/>
+  <text x="240" y="520" text-anchor="middle" font-family="Ubuntu, system-ui, sans-serif" font-size="20" fill="#93c5fd">
+    Portrait Placeholder
+  </text>
+</svg>
+
