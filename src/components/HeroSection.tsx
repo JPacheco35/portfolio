@@ -1,57 +1,80 @@
+// Introduction section with animated typing effect and portrait image
+
 import { useEffect, useMemo, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
 import portraitPlaceholder from '@/assets/portrait-placeholder.svg'
 import styles from './HeroSection.module.css'
 
-const HERO_GREETING_PREFIX = "Hello, I'm "
-const HERO_NAME = 'John Pacheco'
-const HERO_GREETING_FULL = `${HERO_GREETING_PREFIX}${HERO_NAME}`
+// text for the hero section -- needed for typewriter effect
+const heroPrefix = "Hello, I'm "
+const heroName = 'John Pacheco'
+const heroFull = `${heroPrefix}${heroName}`
 
-const HERO_ROLES = ['Web Developer', 'Frontend Engineer', 'Problem Solver', 'Lifelong Learner', 'Creative Thinker', 'Gamer at Heart', 'UI and UX Enthusiast', 'Software Developer', 'UCF Alumni', 'Astronomy Nerd', 'Pokemon Fan',]
+// list of hero roles to alternate between
+const HERO_ROLES = [
+  'Web Developer',
+  'Frontend Engineer',
+  'Problem Solver',
+  'Lifelong Learner',
+  'Creative Thinker',
+  'Gamer at Heart',
+  'UI and UX Enthusiast',
+  'Software Developer',
+  'UCF Alumni',
+  'Astronomy Nerd',
+  'Pokemon Fan'
+]
 
+// hero description
 const HERO_DESCRIPTIONS = [
   'Full-stack builder crafting beautiful digital experiences.',
 ]
 
 export function HeroSection() {
+  // keep track of what's been typed so far
   const [typedGreeting, setTypedGreeting] = useState('')
 
+  // typewriter effect: add a character every 80ms
   useEffect(() => {
-    if (typedGreeting.length >= HERO_GREETING_FULL.length) {
-      return
-    }
+    // stop if fully typed out
+    if (typedGreeting.length >= heroFull.length) {return}
 
     const timeoutId = window.setTimeout(() => {
-      setTypedGreeting(HERO_GREETING_FULL.slice(0, typedGreeting.length + 1))
+      setTypedGreeting(heroFull.slice(0, typedGreeting.length + 1))
     }, 80)
 
-    return () => {
-      window.clearTimeout(timeoutId)
-    }
+    return () => {window.clearTimeout(timeoutId)}
   }, [typedGreeting])
 
+
+  // pull out name and prefix and apply css to my name only
   const typedPrefix = useMemo(
-    () => typedGreeting.slice(0, Math.min(typedGreeting.length, HERO_GREETING_PREFIX.length)),
-    [typedGreeting],
+      () => typedGreeting.slice(0, Math.min(typedGreeting.length, heroPrefix.length)),
+      [typedGreeting], // Recalculate whenever typed greeting changes
+  )
+  const typedName = useMemo(
+      () => typedGreeting.slice(heroPrefix.length),
+      [typedGreeting],
   )
 
-  const typedName = useMemo(
-    () => typedGreeting.slice(HERO_GREETING_PREFIX.length),
-    [typedGreeting],
-  )
 
   return (
     <section id="about" className="container-max animate-slideUp pb-16 pt-32">
-      <Card className="border-blue-500/25 bg-slate-900/60 backdrop-blur-sm">
+      <Card className="border-0 bg-transparent">
         <CardContent className="p-6 sm:p-8">
+
+          {/*2x1 horizontal grid*/}
           <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between">
+
+            {/*introduction and bio*/}
             <div className="w-full max-w-3xl text-center">
+
+              {/*introduction*/}
               <CardHeader className="space-y-2 px-0 pt-0">
-                <CardTitle className="text-[48px]">
+                <CardTitle className="text-[64px]">
                   <span>{typedPrefix}</span>
                   <span className={styles.heroNameGradient}>{typedName}</span>{' '}
-                  <span aria-hidden>🙂</span>
                 </CardTitle>
                 <p
                   className="text-xl font-semibold text-blue-400 sm:text-2xl"
@@ -65,6 +88,7 @@ export function HeroSection() {
                 </p>
               </CardHeader>
 
+              {/*bio*/}
               <p className="text-lg leading-relaxed text-slate-300">
                 <TypewriterText
                   words={HERO_DESCRIPTIONS}
@@ -76,6 +100,7 @@ export function HeroSection() {
               </p>
             </div>
 
+            {/*portrait image of me*/}
             <div className="w-full max-w-[280px] md:max-w-[320px] lg:max-w-[360px]">
               <img
                 src={portraitPlaceholder}
@@ -89,4 +114,3 @@ export function HeroSection() {
     </section>
   )
 }
-
