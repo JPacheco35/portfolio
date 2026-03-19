@@ -21,12 +21,16 @@ import {
   SiTypescript,
 } from 'react-icons/si'
 
+
+// skill object
 interface Skill {
   icon: IconType
   name: string
   color: string
 }
 
+// skill listed by category
+type SkillCategory = keyof typeof skillCategories
 const skillCategories: Record<'frontend' | 'backend' | 'database' | 'tools', Skill[]> = {
   frontend: [
     { icon: SiReact, name: 'React', color: 'text-cyan-400' },
@@ -53,28 +57,28 @@ const skillCategories: Record<'frontend' | 'backend' | 'database' | 'tools', Ski
   ],
 }
 
-type SkillCategory = keyof typeof skillCategories
-
+// tab names for skills filter
 const tabs = ['All', 'Frontend', 'Backend', 'Database', 'Tools'] as const
 type TabType = (typeof tabs)[number]
 
+// repeat the marquee rows to avoid empty gaps
 const marqueeRepeatCount = 3
 
 export function SkillsSection() {
+
+  // which tab is currently selected
   const [activeTab, setActiveTab] = useState<TabType>('All')
-  const activeCategory =
-    activeTab === 'All' ? null : (activeTab.toLowerCase() as SkillCategory)
-  const uniqueSkills = useMemo(
-    () => Array.from(new Map(Object.values(skillCategories).flat().map((skill) => [skill.name, skill])).values()),
-    [],
-  )
+  const activeCategory = activeTab === 'All' ? null : (activeTab.toLowerCase() as SkillCategory)
 
-  const visibleGridSkills =
-    activeTab === 'All' ? uniqueSkills : activeCategory ? skillCategories[activeCategory] : []
+  // filter skills by selected category
+  const uniqueSkills = useMemo(() => Array.from(new Map(Object.values(skillCategories).flat().map((skill) => [skill.name, skill])).values()), [],)
+  const visibleGridSkills = activeTab === 'All' ? uniqueSkills : activeCategory ? skillCategories[activeCategory] : []
 
+  // moving marquee rows, row 2 is row 1 reversed
   const marqueeRowOne = uniqueSkills
   const marqueeRowTwo = [...uniqueSkills.slice(3), ...uniqueSkills.slice(0, 3)]
 
+  // indivudal skill card
   const renderSkillCard = (skill: Skill) => (
     <Card
       key={skill.name}
@@ -89,6 +93,7 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="container-max py-16">
+
       {/* Section Header */}
       <div className="mb-12 text-center">
         <p className="mb-2 text-sm uppercase tracking-wider text-cyan-400">MY SKILLS</p>
@@ -126,7 +131,9 @@ export function SkillsSection() {
         {visibleGridSkills.map((skill) => renderSkillCard(skill))}
       </div>
 
-      {/* Moving skills rows */}
+      {/*moving skills marquee*/}
+
+      {/* row 1 */}
       <div className="space-y-4 overflow-hidden">
         <div className="skills-marquee">
           <div className="skills-marquee-track">
@@ -144,6 +151,8 @@ export function SkillsSection() {
             )}
           </div>
         </div>
+
+        {/*row 2*/}
         <div className="skills-marquee">
           <div className="skills-marquee-track skills-marquee-track-reverse">
             {Array.from({ length: marqueeRepeatCount }, (_, repeatIndex) =>
