@@ -1,3 +1,4 @@
+import { type FormEvent, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -5,8 +6,14 @@ import { cn } from '@/lib/utils'
 import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react'
 
 const isLookingForOpportunities = true
+const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined
+
+type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
 
 export function ContactSection() {
+  const [submitState, setSubmitState] = useState<SubmitState>('idle')
+  const [statusMessage, setStatusMessage] = useState('')
+
   const links = [
     {
       href: 'https://github.com/JPacheco35',
@@ -27,6 +34,47 @@ export function ContactSection() {
       icon: Mail,
     },
   ]
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (!CONTACT_ENDPOINT) {
+      setSubmitState('error')
+      setStatusMessage('Contact form endpoint is not configured yet.')
+      return
+    }
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const payload = Object.fromEntries(formData.entries())
+
+    setSubmitState('submitting')
+    setStatusMessage('Sending message...')
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) {
+        setSubmitState('error')
+        setStatusMessage('Could not send message. Please try again in a moment.')
+        return
+      }
+
+      setSubmitState('success')
+      setStatusMessage('Message sent successfully. Thanks for reaching out!')
+      form.reset()
+    } catch {
+      setSubmitState('error')
+      setStatusMessage('Could not send message. Please try again in a moment.')
+    }
+  }
 
   return (
     <section id="contact" className="container-max py-16">
@@ -50,7 +98,7 @@ export function ContactSection() {
           </CardHeader>
 
           <CardContent>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-slate-200">
                   Name
@@ -60,6 +108,7 @@ export function ContactSection() {
                   name="name"
                   type="text"
                   autoComplete="name"
+                  required
                   placeholder="John Doe"
                   className="h-10 w-full rounded-md border border-blue-400/25 bg-slate-900/60 px-3 text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400"
                 />
@@ -74,6 +123,7 @@ export function ContactSection() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  required
                   placeholder="johndoe@example.com"
                   className="h-10 w-full rounded-md border border-blue-400/25 bg-slate-900/60 px-3 text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400"
                 />
@@ -87,6 +137,7 @@ export function ContactSection() {
                   id="subject"
                   name="subject"
                   type="text"
+                  required
                   placeholder="Project inquiry"
                   className="h-10 w-full rounded-md border border-blue-400/25 bg-slate-900/60 px-3 text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400"
                 />
@@ -100,15 +151,32 @@ export function ContactSection() {
                   id="message"
                   name="message"
                   rows={5}
+                  required
                   placeholder="I&apos;d like to discuss a project opportunity..."
                   className="w-full rounded-md border border-blue-400/25 bg-slate-900/60 px-3 py-2 text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400"
                 />
               </div>
 
-              <Button type="submit" className="w-full gap-2">
-                Send Message
+              <Button type="submit" className="w-full gap-2" disabled={submitState === 'submitting'}>
+                {submitState === 'submitting' ? 'Sending...' : 'Send Message'}
                 <Send className="h-4 w-4" />
               </Button>
+
+              {statusMessage ? (
+                <p
+                  aria-live="polite"
+                  className={cn(
+                    'text-sm',
+                    submitState === 'success'
+                      ? 'text-emerald-300'
+                      : submitState === 'submitting'
+                        ? 'text-slate-300'
+                        : 'text-rose-300'
+                  )}
+                >
+                  {statusMessage}
+                </p>
+              ) : null}
             </form>
           </CardContent>
         </Card>
