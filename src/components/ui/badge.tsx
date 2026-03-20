@@ -13,6 +13,8 @@ const badgeVariants = cva(
         default: 'border-transparent bg-blue-600 text-white',
         secondary: 'border-blue-400/30 bg-blue-500/10 text-blue-300',
         outline: 'border-blue-400/30 text-blue-300',
+        opportunity:
+          'border-emerald-300/50 bg-emerald-500/15 text-emerald-200 shadow-[0_0_18px_rgba(16,185,129,0.35)] backdrop-blur-sm',
       },
     },
     defaultVariants: {

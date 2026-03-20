@@ -1,6 +1,7 @@
 // Introduction section with animated typing effect and portrait image
 
 import { useEffect, useMemo, useState } from 'react'
+import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
 import portraitPlaceholder from '@/assets/portrait-placeholder.svg'
@@ -10,6 +11,8 @@ import styles from './HeroSection.module.css'
 const heroPrefix = "Hello, I'm "
 const heroName = 'John Pacheco'
 const heroFull = `${heroPrefix}${heroName}`
+
+const isLookingForOpportunities = true
 
 // list of hero roles to alternate between
 const heroRoles = [
@@ -34,6 +37,7 @@ const HERO_DESCRIPTIONS = [
 export function HeroSection() {
   // keep track of what's been typed so far
   const [typedGreeting, setTypedGreeting] = useState('')
+  const isGreetingComplete = typedGreeting.length >= heroFull.length
 
   // typewriter effect: add a character every 80ms
   useEffect(() => {
@@ -60,7 +64,7 @@ export function HeroSection() {
 
 
   return (
-    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-blue-500/30">
+    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-emerald-500/30">
       <Card className="border-0 bg-transparent">
         <CardContent className="p-6 sm:p-8">
 
@@ -72,6 +76,21 @@ export function HeroSection() {
 
               {/*introduction*/}
               <CardHeader className="space-y-2 px-0 pt-0">
+                {isLookingForOpportunities ? (
+                  <div className="mb-2 flex justify-center">
+                    <Badge
+                      variant="opportunity"
+                      className={`px-4 py-1 text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-700 ${
+                        isGreetingComplete
+                          ? 'translate-y-0 opacity-100'
+                          : 'pointer-events-none -translate-y-1 opacity-0'
+                      }`}
+                    >
+                      Open to Opportunities
+                    </Badge>
+                  </div>
+                ) : null}
+
                 <CardTitle className="text-[64px]">
                   <span>{typedPrefix}</span>
                   <span className={styles.heroNameGradient}>{typedName}</span>{' '}
@@ -105,7 +124,7 @@ export function HeroSection() {
               <img
                 src={portraitPlaceholder}
                 alt="Portrait placeholder"
-                className="h-auto w-full rounded-2xl border border-blue-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(37,99,235,0.2)]"
+                className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
               />
             </div>
           </div>
