@@ -64,7 +64,7 @@ export function HeroSection() {
 
 
   return (
-    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-emerald-500/30">
+    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-blue-500/30">
       <Card className="border-0 bg-transparent">
         <CardContent className="p-6 sm:p-8">
 
