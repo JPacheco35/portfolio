@@ -36,7 +36,7 @@ const projects: Project[] = [
   {
     id: '2',
     title: 'Pheels',
-    category: 'Website',
+    category: 'Web Application',
     image: pheelsDemoImage,
     description:
       'A journaling and mood diary web app written in TypeScript using the MERN stack.',
@@ -49,11 +49,10 @@ const projects: Project[] = [
   {
     id: '3',
     title: 'Doble-Seis',
-    category: 'Website + Desktop',
+    category: 'Browser Game',
     image: dobleseisDemoImage,
-    description:
-      'Real-time data visualization with custom charts, interactive filters, and export capabilities.',
-    technologies: ['React', 'Chart.js', 'API'],
+    description: 'A 2v2 multiplayer browser dominoes team game built with the MERN stack, featuring real-time matches, a matchmaking system, and smooth interactive gameplay.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'MantineUI'],
     links: [
       { label: 'GitHub', href: 'https://github.com/JPacheco35/doble-seis', iconType: 'github' },
       { label: 'Live Demo', href: 'https://doble-seis.vercel.app', iconType: 'docs' },
@@ -64,9 +63,8 @@ const projects: Project[] = [
     title: 'Portfolio Website',
     category: 'Website',
     image: portfolioDemoImage,
-    description:
-        'Responsive portfolio website with smooth animations, contact form, and project showcase.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+    description: 'Portfolio website with experience history, skillset, contact form, and project showcase.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Shadcn-UI'],
     links: [
       { label: 'GitHub', href: 'https://github.com/JPacheco35/portfolio', iconType: 'github' },
       { label: 'Live Demo', href: 'https://johnpacheco.org', iconType: 'docs' },
