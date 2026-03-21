@@ -5,6 +5,7 @@ import { HeroSection } from './components/HeroSection'
 import { ParticleBackground } from './components/ParticleBackground'
 import { ProjectsSection } from './components/ProjectsSection'
 import { SkillsSection } from './components/SkillsSection'
+import {EducationSection} from "@/components/EducationSection.tsx";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
 
           {/*skills + technologies section*/}
           <SkillsSection />
+
+          {/*school section*/}
+          <EducationSection />
 
           {/*past experience section*/}
           <ExperienceSection />
