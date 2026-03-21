@@ -128,7 +128,7 @@ export function HeroSection() {
               <img
                   src={Portrait}
                   alt="Portrait placeholder"
-                  className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
+                  className="h-auto w-full rounded-2xl border border-blue-500/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
               />
             </div>
           </div>
