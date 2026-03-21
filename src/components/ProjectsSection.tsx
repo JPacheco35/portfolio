@@ -7,6 +7,7 @@ import {projects} from "@/components/Projects.ts";
 
 export function ProjectsSection() {
 
+  // on click for the portfolio website link, show an alert if the user clicks portfolio website link (they are already there)
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     projectTitle: string,
@@ -20,9 +21,12 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="container-max py-16 border-b border-blue-500/30">
+
+      {/*title section*/}
       <h2 className="mb-12 border-b border-blue-500/30 pb-4 text-[60px] font-bold">
         Personal <span className={styles.heroNameGradient}>Projects</span>
       </h2>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <Card
