@@ -1,12 +1,12 @@
 // Contact Section & Social Links at the bottom of the page
 
 import { type FormEvent, useState } from 'react'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react'
 import SocialCard from "@/components/SocialCard.tsx";
+import OpportunityPill from "@/components/OpportunityPill.tsx";
 
 
 // am i looking for new work/jobs? --> display green pill
@@ -105,16 +105,7 @@ export function ContactSection() {
 
           {/*looking for work green pill*/}
           <CardHeader className="gap-3">
-            {isLookingForOpportunities ? (
-                <div className="mb-2 flex justify-center">
-                  <Badge
-                      variant="opportunity"
-                      className={`px-4 py-1 text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-700 ${'translate-y-0 opacity-100'}`}
-                  >
-                    Open to Opportunities
-                  </Badge>
-                </div>
-            ) : null}
+            <OpportunityPill isLookingForOpportunities={isLookingForOpportunities} />
             <CardTitle className="gradient-text text-3xl">Send me a message</CardTitle>
             <p className="text-slate-300">
               Fill out the form and I'll get back to you as I can.

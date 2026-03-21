@@ -1,9 +1,9 @@
 // Introduction section with animated typing effect and portrait image
 
 import { useEffect, useMemo, useState } from 'react'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
+import OpportunityPill from '@/components/OpportunityPill'
 import styles from './HeroSection.module.css'
 
 import Portrait from '../assets/images/portrait.jpg'
@@ -36,7 +36,6 @@ const HERO_DESCRIPTIONS = ['Full-stack builder crafting beautiful digital experi
 export function HeroSection() {
   // keep track of what's been typed so far
   const [typedGreeting, setTypedGreeting] = useState('')
-  const isGreetingComplete = typedGreeting.length >= heroFull.length
 
   // typewriter effect: add a character every 80ms
   useEffect(() => {
@@ -75,20 +74,7 @@ export function HeroSection() {
 
               {/*introduction*/}
               <CardHeader className="space-y-2 px-0 pt-0">
-                {isLookingForOpportunities ? (
-                  <div className="mb-2 flex justify-center">
-                    <Badge
-                      variant="opportunity"
-                      className={`px-4 py-1 text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-700 ${
-                        isGreetingComplete
-                          ? 'translate-y-0 opacity-100'
-                          : 'pointer-events-none -translate-y-1 opacity-0'
-                      }`}
-                    >
-                      Open to Opportunities
-                    </Badge>
-                  </div>
-                ) : null}
+                <OpportunityPill isLookingForOpportunities={isLookingForOpportunities} />
 
                 <CardTitle className="text-[64px]">
                   <span>{typedPrefix}</span>
