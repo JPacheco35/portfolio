@@ -2,10 +2,11 @@
 
 import { type FormEvent, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react'
+import SocialCard from "@/components/SocialCard.tsx";
 
 
 // am i looking for new work/jobs? --> display green pill
@@ -225,29 +226,7 @@ export function ContactSection() {
           {/*socials card*/}
           <CardContent className="space-y-4">
             <div className="space-y-4">
-              {links.map((link) => {
-                const Icon = link.icon
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      buttonVariants({ variant: 'outline' }),
-                      'h-auto w-full justify-start gap-3 p-4 text-left'
-                    )}
-                  >
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/15">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="flex flex-col">
-                      <span className="text-base font-semibold text-slate-100">{link.label}</span>
-                      <span className="text-sm text-slate-400">{link.value}</span>
-                    </span>
-                  </a>
-                )
-              })}
+              {links.map((link) => (<SocialCard key={link.label} link={link} />))}
             </div>
 
             {/*location info*/}
