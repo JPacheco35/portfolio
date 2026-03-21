@@ -173,7 +173,7 @@ export function ContactSection() {
                   name="message"
                   rows={5}
                   required
-                  placeholder="I&apos;d like to discuss a project opportunity..."
+                  placeholder="I'd like to discuss a project opportunity..."
                   className="w-full rounded-md border border-blue-400/25 bg-slate-900/60 px-3 py-2 text-slate-100 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400"
                 />
               </div>
