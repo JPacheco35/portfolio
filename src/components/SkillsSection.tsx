@@ -96,8 +96,10 @@ export function SkillsSection() {
 
       {/* Section Header */}
       <div className="mb-12 text-center">
-        <p className="mb-2 text-sm uppercase tracking-wider text-cyan-400">MY SKILLS</p>
-        <h2 className="mb-4 text-[50px] font-bold">
+        <p className="mb-2 text-sm uppercase tracking-wider text-cyan-400">
+          my skills
+        </p>
+        <h2 className="mb-4 text-[60px] font-bold">
           Technologies &{' '}
           <span className={styles.heroNameGradient}>Tools</span>
         </h2>

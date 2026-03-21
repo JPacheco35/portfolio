@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
-import portraitPlaceholder from '@/assets/portrait-placeholder.svg'
 import styles from './HeroSection.module.css'
+
+import Portrait from '../assets/images/portrait.jpg'
 
 // text for the hero section -- needed for typewriter effect
 const heroPrefix = "Hello, I'm "
@@ -30,9 +31,7 @@ const heroRoles = [
 ]
 
 // hero description
-const HERO_DESCRIPTIONS = [
-  'Full-stack builder crafting beautiful digital experiences.',
-]
+const HERO_DESCRIPTIONS = ['Full-stack builder crafting beautiful digital experiences.',]
 
 export function HeroSection() {
   // keep track of what's been typed so far
@@ -64,7 +63,7 @@ export function HeroSection() {
 
 
   return (
-    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-emerald-500/30">
+    <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-blue-500/30">
       <Card className="border-0 bg-transparent">
         <CardContent className="p-6 sm:p-8">
 
@@ -121,10 +120,15 @@ export function HeroSection() {
 
             {/*portrait image of me*/}
             <div className="w-full max-w-[280px] md:max-w-[320px] lg:max-w-[360px]">
+              {/*<img*/}
+              {/*  src={portraitPlaceholder}*/}
+              {/*  alt="Portrait placeholder"*/}
+              {/*  className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"*/}
+              {/*/>*/}
               <img
-                src={portraitPlaceholder}
-                alt="Portrait placeholder"
-                className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
+                  src={Portrait}
+                  alt="Portrait placeholder"
+                  className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
               />
             </div>
           </div>

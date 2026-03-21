@@ -71,3 +71,19 @@ export default defineConfig([
   },
 ])
 ```
+
+## Contact Form Setup
+
+The contact form in `ContactSection.tsx` sends a JSON payload to a configurable endpoint.
+
+1. Copy `.env.example` to `.env`.
+2. Set `VITE_CONTACT_ENDPOINT` to your form backend URL (for example, a Formspree endpoint).
+3. Restart the dev server after editing `.env`.
+
+Payload fields sent:
+
+- `name`
+- `email`
+- `subject`
+- `message`
+
