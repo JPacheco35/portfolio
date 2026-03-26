@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
 import OpportunityPill from '@/components/OpportunityPill'
 import styles from './HeroSection.module.css'
+import { BsFiletypePdf, BsFiletypeDocx } from 'react-icons/bs'
 
 import Portrait from '../assets/images/portrait.jpg'
 
@@ -34,7 +35,7 @@ const heroRoles = [
 
 // hero description
 const HERO_DESCRIPTIONS = [
-    "Full-stack developer focused on creating styliish, intuative, & efficient web applications. UCF graduate with a B.S. and M.S. in Computer Science."
+    "Full-stack developer focused on creating stylish, intuitive, & efficient web applications. UCF graduate with a B.S. and M.S. in Computer Science."
 ]
 
 export function HeroSection() {
@@ -108,24 +109,29 @@ export function HeroSection() {
               </p>
 
               {/* Resume download buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center items-center">
-                <a
-                  href="/JohnPacheco_Resume.pdf"
-                  download
-                  className="inline-flex items-center gap-2 border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-sm font-medium transition-all duration-200 h-9 px-3 hover:scale-105 focus:scale-105"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-4 h-4" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 2a1 1 0 0 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4A1 1 0 1 1 5.707 8.293L8 10.586V2z" /><rect x="3" y="16" width="14" height="2" rx="1" fill="currentColor" /></svg>
-                  .PDF Resume
-                </a>
-                <a
-                  href="/JohnPacheco_Resume.docx"
-                  download
-                  className="inline-flex items-center gap-2 border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-sm font-medium transition-all duration-200 h-9 px-3 hover:scale-105 focus:scale-105"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-4 h-4" stroke="currentColor"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/><text x="10" y="14" textAnchor="middle" fontSize="7" fill="currentColor" fontFamily="Arial, sans-serif">DOC</text></svg>
-                  .DOCX Resume
-                </a>
+              <div className="flex flex-col items-center mt-6">
+                <span className="text-sm font-semibold text-slate-400 mb-1 tracking-wide uppercase">
+                  Download Resume
+                </span>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <a
+                      href="/JohnPacheco_Resume.pdf"
+                      download
+                      className="inline-flex items-center justify-center border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                  >
+                    <BsFiletypePdf className="text-cyan-500 text-4xl" />
+                  </a>
+                  <a
+                      href="/JohnPacheco_Resume.docx"
+                      download
+                      className="inline-flex items-center justify-center border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                  >
+                    <BsFiletypeDocx className="text-blue-400 text-4xl" />
+                  </a>
+                </div>
               </div>
+
+
             </div>
 
             {/*portrait image of me*/}

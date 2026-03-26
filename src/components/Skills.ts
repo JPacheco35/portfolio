@@ -13,6 +13,7 @@ import {
     SiReact,
     SiTailwindcss,
     SiTypescript,
+    SiFastapi,
 } from 'react-icons/si'
 import type {IconType} from "react-icons";
 
@@ -36,7 +37,7 @@ export const skillCategories: Record<'frontend' | 'backend' | 'database' | 'tool
         { icon: SiExpress, name: 'Express', color: 'text-white' },
         { icon: SiPostgresql, name: 'PostgreSQL', color: 'text-blue-500' },
         { icon: SiPython, name: 'Python', color: 'text-blue-300' },
-        { icon: SiPython, name: 'FastAPI', color: 'text-green-400' },
+        { icon: SiFastapi, name: 'FastAPI', color: 'text-green-400' },
     ],
     database: [
         { icon: SiPostgresql, name: 'PostgreSQL', color: 'text-blue-500' },
