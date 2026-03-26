@@ -66,10 +66,10 @@ export function EducationSection() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 {/* Logo and Degree Info */}
                 <div className="flex gap-4 flex-1">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <img 
                       src={UCFLogo} 
-                      alt="UCF Logo" 
+                      alt="University of Central Florida logo" 
                       className="h-16 w-16 object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
                   </div>
@@ -145,8 +145,7 @@ export function EducationSection() {
       </div>
 
       {/* Bottom accent line */}
-      <div className="mt-8 h-0.5 bg-gradient-to-r from-blue-500/50 via-cyan-500/50 to-transparent rounded-full" />
+      <div className="mt-8 h-0.5 bg-linear-to-r from-blue-500/50 via-cyan-500/50 to-transparent rounded-full" />
     </section>
   )
 }
-

@@ -35,7 +35,7 @@ export function ProjectsSection() {
           >
             {/* Preview Image Placeholder */}
             <div className="aspect-video bg-linear-to-br from-blue-500/10 to-slate-900/50">
-              <img src={project.image} alt={project.title} className="object-cover w-full h-full" />
+              <img src={project.image} alt={`Screenshot of the ${project.title} project - ${project.description}`} className="object-cover w-full h-full" />
             </div>
 
             <CardContent className="flex flex-col gap-3 p-4">
@@ -105,4 +105,3 @@ export function ProjectsSection() {
     </section>
   )
 }
-
