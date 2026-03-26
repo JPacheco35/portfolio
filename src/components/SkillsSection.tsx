@@ -22,6 +22,16 @@ type TabType = (typeof tabs)[number]
 // repeat the marquee rows to avoid empty gaps
 const marqueeRepeatCount = 3
 
+// Fisher-Yates shuffle function
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
 export function SkillsSection() {
 
   // which tab is currently selected
@@ -32,9 +42,16 @@ export function SkillsSection() {
   const uniqueSkills = useMemo(() => Array.from(new Map(Object.values(skillCategories).flat().map((skill) => [skill.name, skill])).values()), [],)
   const visibleGridSkills = activeTab === 'All' ? uniqueSkills : activeCategory ? skillCategories[activeCategory] : []
 
-  // moving marquee rows, row 2 is row 1 reversed
-  const marqueeRowOne = uniqueSkills
-  const marqueeRowTwo = [...uniqueSkills.slice(3), ...uniqueSkills.slice(0, 3)]
+  // moving marquee rows, now truly randomized on every mount and shuffled independently
+  const [marqueeRowOne, marqueeRowTwo] = useMemo(() => {
+    // shuffle a copy of uniqueSkills for each row independently
+    const shuffledOne = shuffle([...uniqueSkills])
+    const shuffledTwo = shuffle([...uniqueSkills])
+    return [
+      shuffledOne,
+      shuffledTwo,
+    ]
+  }, [uniqueSkills])
 
   // indivudal skill card
   const renderSkillCard = (skill: Skill) => (
