@@ -49,10 +49,10 @@ export function EducationSection() {
         <p className="mb-2 text-sm uppercase tracking-wider text-cyan-400">
           my background
         </p>
-        <h2 className="text-[60px] font-bold">
-          Education &{' '}
-          <span className={styles.heroNameGradient}>Achievements</span>
-        </h2>
+        <h1 className="text-[60px] font-bold">
+          Achievements &{' '}
+          <span className={styles.heroNameGradient}>Education</span>
+        </h1>
       </div>
 
       {/* Education Timeline */}

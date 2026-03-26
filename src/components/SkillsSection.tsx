@@ -74,10 +74,10 @@ export function SkillsSection() {
         <p className="mb-2 text-sm uppercase tracking-wider text-cyan-400">
           my skills
         </p>
-        <h2 className="mb-4 text-[60px] font-bold">
+        <h1 className="mb-4 text-[60px] font-bold">
           Technologies &{' '}
-          <span className={styles.heroNameGradient}>Tools</span>
-        </h2>
+          <span className={styles.heroNameGradient}>Skills</span>
+        </h1>
       </div>
 
       {/* Tabs */}
