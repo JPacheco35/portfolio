@@ -34,8 +34,8 @@ const heroRoles = [
 
 // hero description
 const HERO_DESCRIPTIONS = [
-    'Full-stack builder crafting beautiful digital experiences.'
-,]
+    "Full-stack developer focused on creating styliish, intuative, & efficient web applications. UCF graduate with a B.S. and M.S. in Computer Science."
+]
 
 export function HeroSection() {
   // keep track of what's been typed so far
