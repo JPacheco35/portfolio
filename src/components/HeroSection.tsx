@@ -80,7 +80,7 @@ export function HeroSection() {
               <CardHeader className="space-y-2 px-0 pt-0">
                 <OpportunityPill isLookingForOpportunities={isLookingForOpportunities} />
 
-                <CardTitle className="text-[64px]">
+                <CardTitle className="text-[60px]">
                   <span>{typedPrefix}</span>
                   <span className={styles.heroNameGradient}>{typedName}</span>{' '}
                 </CardTitle>
