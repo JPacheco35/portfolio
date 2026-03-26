@@ -25,12 +25,12 @@ const heroRoles = [
   'Problem Solver',
   'Lifelong Learner',
   'Creative Thinker',
-  'Gamer at Heart',
   'UI and UX Enthusiast',
   'Software Developer',
   'UCF Alumni',
   'Astronomy Nerd',
-  'Pokemon Fan'
+  'Pokemon Fan',
+  'Gamer at Heart'
 ]
 
 // hero description
@@ -65,6 +65,13 @@ export function HeroSection() {
       [typedGreeting],
   )
 
+  // Animation state for resume card fade-in
+  const [showResumeCard, setShowResumeCard] = useState(false)
+  useEffect(() => {
+    // Trigger fade-in after mount, avoid cascading render warning
+    const timeout = setTimeout(() => setShowResumeCard(true), 10)
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-blue-500/30">
@@ -108,27 +115,31 @@ export function HeroSection() {
                 />
               </p>
 
-              {/* Resume download buttons */}
+              {/* Resume download buttons in a card with fade-in */}
               <div className="flex flex-col items-center mt-6">
-                <span className="text-sm font-semibold text-slate-400 mb-1 tracking-wide uppercase">
-                  Download Resume
-                </span>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <a
-                      href="/JohnPacheco_Resume.pdf"
-                      download
-                      className="inline-flex items-center justify-center border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
-                  >
-                    <BsFiletypePdf className="text-cyan-500 text-4xl" />
-                  </a>
-                  <a
-                      href="/JohnPacheco_Resume.docx"
-                      download
-                      className="inline-flex items-center justify-center border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
-                  >
-                    <BsFiletypeDocx className="text-blue-400 text-4xl" />
-                  </a>
-                </div>
+                <Card
+                  className={`bg-slate-900/80 border border-blue-500/20 shadow-lg px-4 py-3 transition-opacity duration-700 ${showResumeCard ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  <span className="text-md font-semibold text-slate-400 mb-2 tracking-wide flex justify-center">
+                    Resume Download
+                  </span>
+                  <div className="flex flex-row gap-4 justify-center items-center">
+                    <a
+                        href="/JohnPacheco_Resume.pdf"
+                        download
+                        className="inline-flex items-center justify-center border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                    >
+                      <BsFiletypePdf className="text-cyan-500 text-4xl" />
+                    </a>
+                    <a
+                        href="/JohnPacheco_Resume.docx"
+                        download
+                        className="inline-flex items-center justify-center border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                    >
+                      <BsFiletypeDocx className="text-blue-400 text-4xl" />
+                    </a>
+                  </div>
+                </Card>
               </div>
 
 
