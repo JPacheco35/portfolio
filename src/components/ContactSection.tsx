@@ -115,7 +115,7 @@ export function ContactSection() {
             <OpportunityPill isLookingForOpportunities={isLookingForOpportunities} />
             <CardTitle className="gradient-text text-3xl">Send me a message</CardTitle>
             <p className="text-slate-300">
-              Fill out the form and I'll get back to you as I can.
+              Fill out the form and I'll get back to you as soon as I can.
             </p>
           </CardHeader>
 
