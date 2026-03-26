@@ -5,11 +5,16 @@ import { HeroSection } from './components/HeroSection'
 import { ParticleBackground } from './components/ParticleBackground'
 import { ProjectsSection } from './components/ProjectsSection'
 import { SkillsSection } from './components/SkillsSection'
-import {EducationSection} from "@/components/EducationSection.tsx";
+import { EducationSection } from "@/components/EducationSection.tsx";
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-950">
+      <Helmet>
+        <title>John Pacheco | Portfolio</title>
+        <meta name="description" content="Portfolio of John Pacheco, Computer Science graduate from UCF. Explore my projects, skills, and experience." />
+      </Helmet>
       <ParticleBackground />
       <header className="relative z-20" role="banner" aria-label="Site Header">
         <Header />
