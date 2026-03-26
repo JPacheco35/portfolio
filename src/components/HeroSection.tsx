@@ -19,6 +19,8 @@ const isLookingForOpportunities = true
 const heroRoles = [
   'Web Developer',
   'Frontend Engineer',
+  'Fullstack Developer',
+  'Database Administrator',
   'Problem Solver',
   'Lifelong Learner',
   'Creative Thinker',
@@ -31,7 +33,9 @@ const heroRoles = [
 ]
 
 // hero description
-const HERO_DESCRIPTIONS = ['Full-stack builder crafting beautiful digital experiences.',]
+const HERO_DESCRIPTIONS = [
+    'Full-stack builder crafting beautiful digital experiences.'
+,]
 
 export function HeroSection() {
   // keep track of what's been typed so far
@@ -102,10 +106,30 @@ export function HeroSection() {
                   deletingSpeedMs={30}
                 />
               </p>
+
+              {/* Resume download buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center items-center">
+                <a
+                  href="/JohnPacheco_Resume.pdf"
+                  download
+                  className="inline-flex items-center gap-2 border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-sm font-medium transition-all duration-200 h-9 px-3 hover:scale-105 focus:scale-105"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-4 h-4" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 2a1 1 0 0 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4A1 1 0 1 1 5.707 8.293L8 10.586V2z" /><rect x="3" y="16" width="14" height="2" rx="1" fill="currentColor" /></svg>
+                  .PDF Resume
+                </a>
+                <a
+                  href="/JohnPacheco_Resume.docx"
+                  download
+                  className="inline-flex items-center gap-2 border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-sm font-medium transition-all duration-200 h-9 px-3 hover:scale-105 focus:scale-105"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-4 h-4" stroke="currentColor"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/><text x="10" y="14" textAnchor="middle" fontSize="7" fill="currentColor" fontFamily="Arial, sans-serif">DOC</text></svg>
+                  .DOCX Resume
+                </a>
+              </div>
             </div>
 
             {/*portrait image of me*/}
-            <div className="w-full max-w-[280px] md:max-w-[320px] lg:max-w-[360px]">
+            <div className="w-full max-w-70 md:max-w-[320px] lg:max-w-90">
               {/*<img*/}
               {/*  src={portraitPlaceholder}*/}
               {/*  alt="Portrait placeholder"*/}
