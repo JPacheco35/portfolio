@@ -9,7 +9,9 @@ import styles from './HeroSection.module.css'
 import Portrait from '../assets/images/portrait.jpg'
 
 // text for the hero section -- needed for typewriter effect
-const heroPrefix = "Hello, I'm "
+const hero/home/jpacheco/Documents/Resume/JohnPacheco_Resume.docx
+/home/jpacheco/Documents/Resume/JohnPacheco_Resume.pdf
+Prefix = "Hello, I'm "
 const heroName = 'John Pacheco'
 const heroFull = `${heroPrefix}${heroName}`
 
