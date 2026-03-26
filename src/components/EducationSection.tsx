@@ -50,8 +50,7 @@ export function EducationSection() {
           my background
         </p>
         <h1 className="text-[60px] font-bold">
-          Achievements &{' '}
-          <span className={styles.heroNameGradient}>Education</span>
+          <span className={styles.heroNameGradient}>Education </span> & Achievements{' '}
         </h1>
       </div>
 

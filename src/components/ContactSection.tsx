@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react'
 import SocialCard from "@/components/SocialCard.tsx";
 import OpportunityPill from "@/components/OpportunityPill.tsx";
+import styles from "@/components/HeroSection.module.css";
 
 
 // am i looking for new work/jobs? --> display green pill
@@ -100,6 +101,12 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="container-max py-16">
+
+      {/*title section*/}
+      <h1 className="mb-12 border-b border-blue-500/30 pb-4 text-[60px] font-bold">
+        <span className={styles.heroNameGradient}>Contact </span> Details
+      </h1>
+
       <div className="grid gap-6 lg:grid-cols-2">
         <Card className="transition-all duration-300 hover:border-blue-400 hover:bg-blue-500/15">
 
