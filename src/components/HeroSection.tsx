@@ -1,10 +1,11 @@
 // Introduction section with animated typing effect and portrait image
 
 import { useEffect, useMemo, useState } from 'react'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TypewriterText } from '@/components/TypewriterText'
+import OpportunityPill from '@/components/OpportunityPill'
 import styles from './HeroSection.module.css'
+import { BsFiletypePdf, BsFiletypeDocx } from 'react-icons/bs'
 
 import Portrait from '../assets/images/portrait.jpg'
 
@@ -19,24 +20,27 @@ const isLookingForOpportunities = true
 const heroRoles = [
   'Web Developer',
   'Frontend Engineer',
+  'Fullstack Developer',
+  'Database Administrator',
   'Problem Solver',
   'Lifelong Learner',
   'Creative Thinker',
-  'Gamer at Heart',
   'UI and UX Enthusiast',
   'Software Developer',
   'UCF Alumni',
   'Astronomy Nerd',
-  'Pokemon Fan'
+  'Pokemon Fan',
+  'Gamer at Heart'
 ]
 
 // hero description
-const HERO_DESCRIPTIONS = ['Full-stack builder crafting beautiful digital experiences.',]
+const HERO_DESCRIPTIONS = [
+    "Full-stack developer focused on creating stylish, intuitive, & efficient web applications. UCF graduate with a B.S. and M.S. in Computer Science."
+]
 
 export function HeroSection() {
   // keep track of what's been typed so far
   const [typedGreeting, setTypedGreeting] = useState('')
-  const isGreetingComplete = typedGreeting.length >= heroFull.length
 
   // typewriter effect: add a character every 80ms
   useEffect(() => {
@@ -61,6 +65,13 @@ export function HeroSection() {
       [typedGreeting],
   )
 
+  // Animation state for resume card fade-in
+  const [showResumeCard, setShowResumeCard] = useState(false)
+  useEffect(() => {
+    // Trigger fade-in after mount, avoid cascading render warning
+    const timeout = setTimeout(() => setShowResumeCard(true), 10)
+    return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <section id="about" className="container-max animate-slideUp pb-60 pt-32 border-b border-blue-500/30">
@@ -75,22 +86,9 @@ export function HeroSection() {
 
               {/*introduction*/}
               <CardHeader className="space-y-2 px-0 pt-0">
-                {isLookingForOpportunities ? (
-                  <div className="mb-2 flex justify-center">
-                    <Badge
-                      variant="opportunity"
-                      className={`px-4 py-1 text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-700 ${
-                        isGreetingComplete
-                          ? 'translate-y-0 opacity-100'
-                          : 'pointer-events-none -translate-y-1 opacity-0'
-                      }`}
-                    >
-                      Open to Opportunities
-                    </Badge>
-                  </div>
-                ) : null}
+                <OpportunityPill isLookingForOpportunities={isLookingForOpportunities} />
 
-                <CardTitle className="text-[64px]">
+                <CardTitle className="text-[60px]">
                   <span>{typedPrefix}</span>
                   <span className={styles.heroNameGradient}>{typedName}</span>{' '}
                 </CardTitle>
@@ -116,10 +114,39 @@ export function HeroSection() {
                   deletingSpeedMs={30}
                 />
               </p>
+
+              {/* Resume download buttons in a card with fade-in */}
+              <div className="flex flex-col items-center mt-6">
+                <Card
+                  className={`bg-slate-900/80 border border-blue-500/20 shadow-lg px-4 py-3 transition-opacity duration-700 ${showResumeCard ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  <span className="text-md font-semibold text-slate-400 mb-2 tracking-wide flex justify-center">
+                    Resume Download
+                  </span>
+                  <div className="flex flex-row gap-4 justify-center items-center">
+                    <a
+                        href="/JohnPacheco_Resume.pdf"
+                        download
+                        className="inline-flex items-center justify-center border border-cyan-500 text-cyan-500 hover:bg-cyan-100 hover:text-cyan-700 focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                    >
+                      <BsFiletypePdf className="text-cyan-500 text-4xl" />
+                    </a>
+                    <a
+                        href="/JohnPacheco_Resume.docx"
+                        download
+                        className="inline-flex items-center justify-center border border-blue-300 text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md text-2xl font-medium transition-all duration-200 h-12 w-12 hover:scale-110 focus:scale-110"
+                    >
+                      <BsFiletypeDocx className="text-blue-400 text-4xl" />
+                    </a>
+                  </div>
+                </Card>
+              </div>
+
+
             </div>
 
             {/*portrait image of me*/}
-            <div className="w-full max-w-[280px] md:max-w-[320px] lg:max-w-[360px]">
+            <div className="w-full max-w-70 md:max-w-[320px] lg:max-w-90">
               {/*<img*/}
               {/*  src={portraitPlaceholder}*/}
               {/*  alt="Portrait placeholder"*/}
@@ -128,7 +155,7 @@ export function HeroSection() {
               <img
                   src={Portrait}
                   alt="Portrait placeholder"
-                  className="h-auto w-full rounded-2xl border border-emerald-400/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
+                  className="h-auto w-full rounded-2xl border border-blue-500/30 bg-slate-800/40 shadow-[0_0_40px_rgba(16,185,129,0.22)]"
               />
             </div>
           </div>

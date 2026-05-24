@@ -3,77 +3,11 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import styles from "@/components/HeroSection.module.css";
 import { SiGithub } from 'react-icons/si'
 import { GlobeIcon } from 'lucide-react'
-
-import pheelsDemoImage from '../assets/images/pheels.png'
-import truncc8DemoImage from '../assets/images/truncc8.png'
-import dobleseisDemoImage from '../assets/images/dobleseis.png'
-import portfolioDemoImage from '../assets/images/portfolio.png'
-
-interface Project {
-  id: string
-  title: string
-  category: string
-  image: string
-  description: string
-  technologies: string[]
-  links: { label: string; href: string; iconType: 'github' | 'demo' | 'docs' }[]
-}
-
-const projects: Project[] = [
-  {
-    id: '1',
-    title: 'Truncc8',
-    category: 'Website',
-    image: truncc8DemoImage,
-    description:
-      'Truncc8 is a URL shortener built with TypeScript, Express, and MongoDB.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'MantineUI'],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/JPacheco35/truncc8', iconType: 'github' },
-      { label: 'Live Demo', href: 'https://truncc8.vercel.app/', iconType: 'demo' },
-    ],
-  },
-  {
-    id: '2',
-    title: 'Pheels',
-    category: 'Web Application',
-    image: pheelsDemoImage,
-    description:
-      'A journaling and mood diary web app written in TypeScript using the MERN stack.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'MantineUI'],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/JPacheco35/truncc8', iconType: 'github' },
-      { label: 'Live Demo', href: 'https://truncc8.vercel.app', iconType: 'docs' },
-    ],
-  },
-  {
-    id: '3',
-    title: 'Doble-Seis',
-    category: 'Browser Game',
-    image: dobleseisDemoImage,
-    description: 'A 2v2 multiplayer browser dominoes team game built with the MERN stack, featuring real-time matches, a matchmaking system, and smooth interactive gameplay.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'MantineUI'],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/JPacheco35/doble-seis', iconType: 'github' },
-      { label: 'Live Demo', href: 'https://doble-seis.vercel.app', iconType: 'docs' },
-    ],
-  },
-  {
-    id: '4',
-    title: 'Portfolio Website',
-    category: 'Website',
-    image: portfolioDemoImage,
-    description: 'Portfolio website with experience history, skillset, contact form, and project showcase.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Shadcn-UI'],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/JPacheco35/portfolio', iconType: 'github' },
-      { label: 'Live Demo', href: 'https://johnpacheco.org', iconType: 'docs' },
-    ],
-  }
-]
+import {projects} from "@/components/Projects.ts";
 
 export function ProjectsSection() {
 
+  // on click for the portfolio website link, show an alert if the user clicks portfolio website link (they are already there)
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     projectTitle: string,
@@ -87,9 +21,12 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="container-max py-16 border-b border-blue-500/30">
-      <h2 className="mb-12 border-b border-blue-500/30 pb-4 text-[60px] font-bold">
+
+      {/*title section*/}
+      <h1 className="mb-12 border-b border-blue-500/30 pb-4 text-[60px] font-bold">
         Personal <span className={styles.heroNameGradient}>Projects</span>
-      </h2>
+      </h1>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <Card
@@ -98,7 +35,7 @@ export function ProjectsSection() {
           >
             {/* Preview Image Placeholder */}
             <div className="aspect-video bg-linear-to-br from-blue-500/10 to-slate-900/50">
-              <img src={project.image} alt={project.title} className="object-cover w-full h-full" />
+              <img src={project.image} alt={`Screenshot of the ${project.title} project - ${project.description}`} className="object-cover w-full h-full" />
             </div>
 
             <CardContent className="flex flex-col gap-3 p-4">
@@ -168,4 +105,3 @@ export function ProjectsSection() {
     </section>
   )
 }
-
